@@ -171,6 +171,9 @@ public class Login2 extends javax.swing.JFrame {
 
     private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
         // TODO add your handling code here:
+        FYP_Management FYP = new FYP_Management();
+        FYP.setVisible(true);
+        this.setVisible(false);
        
     }//GEN-LAST:event_LOGINActionPerformed
 
