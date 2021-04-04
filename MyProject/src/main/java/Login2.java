@@ -174,6 +174,7 @@ public class Login2 extends javax.swing.JFrame {
         FYP_Management FYP = new FYP_Management();
         FYP.setVisible(true);
         this.setVisible(false);
+        //for student
        
     }//GEN-LAST:event_LOGINActionPerformed
 
