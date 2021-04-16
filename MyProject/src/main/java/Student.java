@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -26,8 +28,38 @@ public class Student extends javax.swing.JFrame {
         model.addColumn("Student Name");
         model.addColumn("Session");
         model.addColumn("Phone No.");
-        table_books.setModel(model);
+        table_student.setModel(model);
     }
+    
+    public ArrayList ListStudent(String StdName ,String StdID, String StdSession, String StdPhno)
+    {
+        ArrayList<Student_Manage> list = new ArrayList <Student_Manage>();
+        Student_Manage SM = new Student_Manage(StdName,StdID,StdSession,StdPhno);
+        list.add(SM);
+        return list;
+        
+    }
+    
+    public void addRow(String StdName ,String StdID, String StdSession, String StdPhno){
+        
+        DefaultTableModel model= (DefaultTableModel) table_student.getModel();
+        ArrayList<Student_Manage> list = ListStudent(StdName,StdID,StdSession,StdPhno);
+        Object rowData[] = new Object[4];
+        for(int i = 0 ;i<list.size();i++){
+        rowData[0] = list.get(i).StdID;
+        rowData[1] = list.get(i).StdName;
+        rowData[2] = list.get(i).StdSession;
+        rowData[3] = list.get(i).StdPhno;
+        model.addRow(rowData);
+    }
+    }
+    
+    public static void main(String[] args)
+    {
+        Student S = new Student();
+        S.setVisible(true);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,18 +75,18 @@ public class Student extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table_books = new javax.swing.JTable();
-        search = new javax.swing.JButton();
+        table_student = new javax.swing.JTable();
+        UpdateStudent = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        book_title = new javax.swing.JTextField();
-        edition_book = new javax.swing.JTextField();
-        isbn_book = new javax.swing.JTextField();
-        author_book = new javax.swing.JTextField();
+        Student_ID = new javax.swing.JTextField();
+        Student_Ph = new javax.swing.JTextField();
+        Student_Name = new javax.swing.JTextField();
+        Student_Session = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        search1 = new javax.swing.JButton();
+        AddStudent = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,8 +108,8 @@ public class Student extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage Students Data"));
 
-        table_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        table_books.setModel(new javax.swing.table.DefaultTableModel(
+        table_student.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        table_student.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -85,15 +117,15 @@ public class Student extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(table_books);
+        jScrollPane3.setViewportView(table_student);
 
-        search.setBackground(new java.awt.Color(153, 153, 255));
-        search.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search.setText("UPDATE");
-        search.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search.addActionListener(new java.awt.event.ActionListener() {
+        UpdateStudent.setBackground(new java.awt.Color(153, 153, 255));
+        UpdateStudent.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        UpdateStudent.setText("UPDATE");
+        UpdateStudent.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        UpdateStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchActionPerformed(evt);
+                UpdateStudentActionPerformed(evt);
             }
         });
 
@@ -107,34 +139,34 @@ public class Student extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Phone No.");
 
-        book_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Student_ID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        edition_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Student_Ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        isbn_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        isbn_book.addActionListener(new java.awt.event.ActionListener() {
+        Student_Name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Student_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isbn_bookActionPerformed(evt);
+                Student_NameActionPerformed(evt);
             }
         });
 
-        author_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        author_book.addActionListener(new java.awt.event.ActionListener() {
+        Student_Session.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Student_Session.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                author_bookActionPerformed(evt);
+                Student_SessionActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Student ID");
 
-        search1.setBackground(new java.awt.Color(153, 153, 255));
-        search1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search1.setText("ADD");
-        search1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search1.addActionListener(new java.awt.event.ActionListener() {
+        AddStudent.setBackground(new java.awt.Color(153, 153, 255));
+        AddStudent.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        AddStudent.setText("ADD");
+        AddStudent.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        AddStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search1ActionPerformed(evt);
+                AddStudentActionPerformed(evt);
             }
         });
 
@@ -149,16 +181,16 @@ public class Student extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Student_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(13, 13, 13)
-                            .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(25, 25, 25)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(edition_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(Student_Ph, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Student_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Student_Session, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
@@ -175,7 +207,7 @@ public class Student extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Student_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,19 +216,19 @@ public class Student extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Student_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Student_Session, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(edition_book, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Student_Ph, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(AddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(127, 127, 127))
         );
@@ -260,66 +292,73 @@ public class Student extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+    private void UpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateStudentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchActionPerformed
+        DefaultTableModel model= (DefaultTableModel) table_student.getModel();
+        if(table_student.getSelectedRowCount()==1){
+        String StdID = Student_ID.getText();
+        String StdName= Student_Name.getText();
+        String StdSession = Student_Session.getText();
+        String StdPhno = Student_Ph.getText();
+        
+        
+        table_student.setValueAt(StdID, table_student.getSelectedRow(), 0);
+        table_student.setValueAt(StdName, table_student.getSelectedRow(), 1);
+        table_student.setValueAt(StdSession, table_student.getSelectedRow(), 2);
+        table_student.setValueAt(StdPhno, table_student.getSelectedRow(), 3);
+        
+        JOptionPane.showMessageDialog(null,"Student updated successfully");
+        }
+        else{
+        if(table_student.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select any Student!");
+        }
+        }
+        
+    }//GEN-LAST:event_UpdateStudentActionPerformed
 
-    private void isbn_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbn_bookActionPerformed
+    private void Student_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Student_NameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_isbn_bookActionPerformed
+    }//GEN-LAST:event_Student_NameActionPerformed
 
-    private void author_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_bookActionPerformed
+    private void Student_SessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Student_SessionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_author_bookActionPerformed
+    }//GEN-LAST:event_Student_SessionActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
+    private void AddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search1ActionPerformed
+        
+        String StdID = Student_ID.getText();
+        String StdName = Student_Name.getText();
+        String StdSession = Student_Session.getText();
+        String StdPhno = Student_Ph.getText();
+        
+        addRow(StdName, StdID, StdSession, StdPhno);
+        Student_ID.setText("");
+        Student_Name.setText("");
+        Student_Session.setText("");
+        Student_Ph.setText("");
+    }//GEN-LAST:event_AddStudentActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Student().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author_book;
-    private javax.swing.JTextField book_title;
-    private javax.swing.JTextField edition_book;
-    private javax.swing.JTextField isbn_book;
+    private javax.swing.JButton AddStudent;
+    private javax.swing.JTextField Student_ID;
+    private javax.swing.JTextField Student_Name;
+    private javax.swing.JTextField Student_Ph;
+    private javax.swing.JTextField Student_Session;
+    private javax.swing.JButton UpdateStudent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -331,8 +370,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton search;
-    private javax.swing.JButton search1;
-    private javax.swing.JTable table_books;
+    private javax.swing.JTable table_student;
     // End of variables declaration//GEN-END:variables
 }

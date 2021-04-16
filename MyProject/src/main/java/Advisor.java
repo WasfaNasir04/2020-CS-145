@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -24,8 +26,37 @@ public class Advisor extends javax.swing.JFrame {
         model.addColumn("Advisor Name");
         model.addColumn("Advisor ID");
         model.addColumn("Subject Expert");
-        table_books.setModel(model);
+        table_advisor.setModel(model);
     }
+    
+    public ArrayList ListAdvisor(String AdvisorName, String AdvisorID,String SubjectExpert)
+    {
+        ArrayList<Advisor_Manage> list = new ArrayList <Advisor_Manage>();
+        Advisor_Manage AM = new Advisor_Manage(AdvisorName,AdvisorID,SubjectExpert);
+        list.add(AM);
+        return list;
+        
+    }
+    
+    public void addRow(String AdvisorName, String AdvisorID,String SubjectExpert){
+        
+        DefaultTableModel model= (DefaultTableModel) table_advisor.getModel();
+        ArrayList<Advisor_Manage> list = ListAdvisor(AdvisorName,AdvisorID,SubjectExpert);
+        Object rowData[] = new Object[3];
+        for(int i = 0 ;i<list.size();i++){
+        rowData[0] = list.get(i).AdvisorName;
+        rowData[1] = list.get(i).AdvisorID;
+        rowData[2] = list.get(i).SubjectExpert;
+        model.addRow(rowData);
+    }
+    }
+    
+    public static void main(String[] args)
+    {
+        Advisor A = new Advisor();
+        A.setVisible(true);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,18 +71,18 @@ public class Advisor extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table_books = new javax.swing.JTable();
-        search = new javax.swing.JButton();
+        table_advisor = new javax.swing.JTable();
+        UpdateAdvisor = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        book_title = new javax.swing.JTextField();
-        isbn_book = new javax.swing.JTextField();
-        author_book = new javax.swing.JTextField();
+        advisor_name = new javax.swing.JTextField();
+        advisor_ID = new javax.swing.JTextField();
+        subject_expert = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        search1 = new javax.swing.JButton();
-        search2 = new javax.swing.JButton();
+        DeleteAdvisor = new javax.swing.JButton();
+        AddAdvisor = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,8 +104,8 @@ public class Advisor extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage Advisors"));
 
-        table_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        table_books.setModel(new javax.swing.table.DefaultTableModel(
+        table_advisor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        table_advisor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -82,15 +113,15 @@ public class Advisor extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(table_books);
+        jScrollPane3.setViewportView(table_advisor);
 
-        search.setBackground(new java.awt.Color(153, 153, 255));
-        search.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search.setText("UPDATE");
-        search.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search.addActionListener(new java.awt.event.ActionListener() {
+        UpdateAdvisor.setBackground(new java.awt.Color(153, 153, 255));
+        UpdateAdvisor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        UpdateAdvisor.setText("UPDATE");
+        UpdateAdvisor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        UpdateAdvisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchActionPerformed(evt);
+                UpdateAdvisorActionPerformed(evt);
             }
         });
 
@@ -103,42 +134,42 @@ public class Advisor extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Subject Expert");
 
-        book_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        advisor_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        isbn_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        isbn_book.addActionListener(new java.awt.event.ActionListener() {
+        advisor_ID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        advisor_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isbn_bookActionPerformed(evt);
+                advisor_IDActionPerformed(evt);
             }
         });
 
-        author_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        author_book.addActionListener(new java.awt.event.ActionListener() {
+        subject_expert.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        subject_expert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                author_bookActionPerformed(evt);
+                subject_expertActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Advisor Name");
 
-        search1.setBackground(new java.awt.Color(153, 153, 255));
-        search1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search1.setText("DELETE");
-        search1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search1.addActionListener(new java.awt.event.ActionListener() {
+        DeleteAdvisor.setBackground(new java.awt.Color(153, 153, 255));
+        DeleteAdvisor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        DeleteAdvisor.setText("DELETE");
+        DeleteAdvisor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        DeleteAdvisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search1ActionPerformed(evt);
+                DeleteAdvisorActionPerformed(evt);
             }
         });
 
-        search2.setBackground(new java.awt.Color(153, 153, 255));
-        search2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search2.setText("ADD");
-        search2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search2.addActionListener(new java.awt.event.ActionListener() {
+        AddAdvisor.setBackground(new java.awt.Color(153, 153, 255));
+        AddAdvisor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        AddAdvisor.setText("ADD");
+        AddAdvisor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        AddAdvisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search2ActionPerformed(evt);
+                AddAdvisorActionPerformed(evt);
             }
         });
 
@@ -156,19 +187,19 @@ public class Advisor extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addGap(7, 7, 7)
-                                    .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(AddAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(advisor_name, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(advisor_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(subject_expert, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UpdateAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(DeleteAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
@@ -185,7 +216,7 @@ public class Advisor extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(advisor_name, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,17 +225,17 @@ public class Advisor extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(advisor_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subject_expert, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(UpdateAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DeleteAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddAdvisor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(152, 152, 152))
         );
@@ -257,65 +288,85 @@ public class Advisor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+    private void UpdateAdvisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAdvisorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchActionPerformed
+        DefaultTableModel model= (DefaultTableModel) table_advisor.getModel();
+        if(table_advisor.getSelectedRowCount()==1){
+        String AdvisorName = advisor_name.getText();
+        String AdvisorID= advisor_ID.getText();
+        String SubjectExpert = subject_expert.getText();
+        
+        
+        table_advisor.setValueAt(AdvisorName, table_advisor.getSelectedRow(), 0);
+        table_advisor.setValueAt(AdvisorID, table_advisor.getSelectedRow(), 1);
+        table_advisor.setValueAt(SubjectExpert, table_advisor.getSelectedRow(), 2);
+        
+        JOptionPane.showMessageDialog(null,"Advisor updated successfully");
+        }
+        else{
+        if(table_advisor.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select any Advisor!");
+        }
+        }
+    }//GEN-LAST:event_UpdateAdvisorActionPerformed
 
-    private void isbn_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbn_bookActionPerformed
+    private void advisor_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advisor_IDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_isbn_bookActionPerformed
+    }//GEN-LAST:event_advisor_IDActionPerformed
 
-    private void author_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_bookActionPerformed
+    private void subject_expertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subject_expertActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_author_bookActionPerformed
+    }//GEN-LAST:event_subject_expertActionPerformed
 
-    private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
+    private void DeleteAdvisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAdvisorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search1ActionPerformed
+        
+        DefaultTableModel model= (DefaultTableModel) table_advisor.getModel();
+        if(table_advisor.getSelectedRowCount()==1)
+        {
+            model.removeRow(table_advisor.getSelectedRow());
+        }
+        else
+        {
+            if(table_advisor.getRowCount()==0)
+            {
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+           JOptionPane.showMessageDialog(null,"Please select any advisor!");
+        }
+        }
+    }//GEN-LAST:event_DeleteAdvisorActionPerformed
 
-    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
+    private void AddAdvisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAdvisorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search2ActionPerformed
+        
+         
+        String AdvisorName = advisor_name.getText();
+        String AdvisorID = advisor_ID.getText();
+        String SubjectExpert = subject_expert.getText();
+        
+        addRow(AdvisorName, AdvisorID, SubjectExpert);
+        advisor_name.setText("");
+        advisor_ID.setText("");
+        subject_expert.setText("");
+    
+    }//GEN-LAST:event_AddAdvisorActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Advisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Advisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Advisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Advisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Advisor().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author_book;
-    private javax.swing.JTextField book_title;
-    private javax.swing.JTextField isbn_book;
+    private javax.swing.JButton AddAdvisor;
+    private javax.swing.JButton DeleteAdvisor;
+    private javax.swing.JButton UpdateAdvisor;
+    private javax.swing.JTextField advisor_ID;
+    private javax.swing.JTextField advisor_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -326,9 +377,7 @@ public class Advisor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton search;
-    private javax.swing.JButton search1;
-    private javax.swing.JButton search2;
-    private javax.swing.JTable table_books;
+    private javax.swing.JTextField subject_expert;
+    private javax.swing.JTable table_advisor;
     // End of variables declaration//GEN-END:variables
 }

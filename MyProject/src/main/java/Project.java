@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -12,11 +14,13 @@ import javax.swing.table.DefaultTableModel;
  * @author uswa nasir
  */
 public class Project extends javax.swing.JFrame {
-
+    
+    DefaultTableModel model;
     /**
      * Creates new form Project
      */
-    DefaultTableModel model;
+    
+    
     public Project() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -24,7 +28,34 @@ public class Project extends javax.swing.JFrame {
         model.addColumn("Project Title");
         model.addColumn("Project Type");
         model.addColumn("Description");
-        table_books.setModel(model);
+        table_project.setModel(model);
+    }
+    
+    public ArrayList ListUser(String Title ,String Type, String Description){
+        ArrayList<Project_Manage> list = new ArrayList <Project_Manage>();
+        Project_Manage PM = new Project_Manage(Title,Type,Description);
+        list.add(PM);
+        return list;
+        
+    }
+    
+    public void addRow(String Title ,String Type, String Description){
+        
+        DefaultTableModel model= (DefaultTableModel) table_project.getModel();
+        ArrayList<Project_Manage> list = ListUser(Title,Type,Description);
+        Object rowData[] = new Object[2];
+        for(int i = 0 ;i<list.size();i++){
+        rowData[0] = list.get(i).Title;
+        rowData[1] = list.get(i).Type;
+        rowData[2] = list.get(i).Description;
+        model.addRow(rowData);
+    }
+    }
+    
+    public static void main(String[] args)
+    {
+        Project P = new Project();
+        P.setVisible(true);
     }
 
     /**
@@ -41,18 +72,18 @@ public class Project extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table_books = new javax.swing.JTable();
-        search = new javax.swing.JButton();
+        table_project = new javax.swing.JTable();
+        UpdateProjet = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        book_title = new javax.swing.JTextField();
-        isbn_book = new javax.swing.JTextField();
-        author_book = new javax.swing.JTextField();
+        project_title = new javax.swing.JTextField();
+        project_type = new javax.swing.JTextField();
+        project_description = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        search1 = new javax.swing.JButton();
-        search2 = new javax.swing.JButton();
+        Delete_project = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,8 +105,8 @@ public class Project extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Manage Projects"));
 
-        table_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        table_books.setModel(new javax.swing.table.DefaultTableModel(
+        table_project.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        table_project.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -83,20 +114,20 @@ public class Project extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(table_books);
+        jScrollPane3.setViewportView(table_project);
 
-        search.setBackground(new java.awt.Color(153, 153, 255));
-        search.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search.setText("UPDATE");
-        search.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search.addActionListener(new java.awt.event.ActionListener() {
+        UpdateProjet.setBackground(new java.awt.Color(153, 153, 255));
+        UpdateProjet.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        UpdateProjet.setText("UPDATE");
+        UpdateProjet.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        UpdateProjet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchActionPerformed(evt);
+                UpdateProjetActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Project Tyoe");
+        jLabel2.setText("Project Type");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
@@ -104,42 +135,42 @@ public class Project extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Description");
 
-        book_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        project_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        isbn_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        isbn_book.addActionListener(new java.awt.event.ActionListener() {
+        project_type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        project_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isbn_bookActionPerformed(evt);
+                project_typeActionPerformed(evt);
             }
         });
 
-        author_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        author_book.addActionListener(new java.awt.event.ActionListener() {
+        project_description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        project_description.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                author_bookActionPerformed(evt);
+                project_descriptionActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Project Title");
 
-        search1.setBackground(new java.awt.Color(153, 153, 255));
-        search1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search1.setText("DELETE");
-        search1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search1.addActionListener(new java.awt.event.ActionListener() {
+        Delete_project.setBackground(new java.awt.Color(153, 153, 255));
+        Delete_project.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Delete_project.setText("DELETE");
+        Delete_project.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        Delete_project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search1ActionPerformed(evt);
+                Delete_projectActionPerformed(evt);
             }
         });
 
-        search2.setBackground(new java.awt.Color(153, 153, 255));
-        search2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search2.setText("ADD");
-        search2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search2.addActionListener(new java.awt.event.ActionListener() {
+        Add.setBackground(new java.awt.Color(153, 153, 255));
+        Add.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Add.setText("ADD");
+        Add.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search2ActionPerformed(evt);
+                AddActionPerformed(evt);
             }
         });
 
@@ -157,19 +188,19 @@ public class Project extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(25, 25, 25))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(42, 42, 42)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(project_title, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(project_type, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(project_description, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UpdateProjet, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(Delete_project, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
@@ -186,7 +217,7 @@ public class Project extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(project_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,17 +226,17 @@ public class Project extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(project_type, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(project_description, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(UpdateProjet, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Delete_project, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(152, 152, 152))
         );
@@ -269,65 +300,83 @@ public class Project extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+    private void UpdateProjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProjetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchActionPerformed
-
-    private void isbn_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbn_bookActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_isbn_bookActionPerformed
-
-    private void author_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_bookActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_author_bookActionPerformed
-
-    private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_search1ActionPerformed
-
-    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_search2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Project.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Project.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Project.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Project.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        DefaultTableModel model= (DefaultTableModel) table_project.getModel();
+        if(table_project.getSelectedRowCount()==1){
+        String Title= project_title.getText();
+        String Type = project_type.getText();
+        String Description = project_description.getText();
+        
+        
+        
+        table_project.setValueAt(Title, table_project.getSelectedRow(), 0);
+        table_project.setValueAt(Type, table_project.getSelectedRow(), 1);
+        table_project.setValueAt(Description, table_project.getSelectedRow(), 2);
+       
+        
+        JOptionPane.showMessageDialog(null,"Project updated successfully");
         }
-        //</editor-fold>
+        else{
+        if(table_project.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select any project!");
+        }
+        }
+        
+    }//GEN-LAST:event_UpdateProjetActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Project().setVisible(true);
-            }
-        });
-    }
+    private void project_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_project_typeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_project_typeActionPerformed
 
+    private void project_descriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_project_descriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_project_descriptionActionPerformed
+
+    private void Delete_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_projectActionPerformed
+        // TODO add your handling code here:
+         DefaultTableModel model= (DefaultTableModel) table_project.getModel();
+        if(table_project.getSelectedRowCount()==1)
+        {
+            model.removeRow(table_project.getSelectedRow());
+        }
+        else
+        {
+            if(table_project.getRowCount()==0)
+            {
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+           JOptionPane.showMessageDialog(null,"Please select any project!");
+        }
+        }
+    }//GEN-LAST:event_Delete_projectActionPerformed
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+        // TODO add your handling code here:
+        String Title= project_title.getText();
+        String Type = project_type.getText();
+        String Description = project_description.getText();
+        
+        
+        addRow(Title ,Type, Description);
+        project_title.setText("");
+        project_type.setText("");
+        project_description.setText("");
+        
+        
+        
+    }//GEN-LAST:event_AddActionPerformed
+
+   
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author_book;
-    private javax.swing.JTextField book_title;
-    private javax.swing.JTextField isbn_book;
+    private javax.swing.JButton Add;
+    private javax.swing.JButton Delete_project;
+    private javax.swing.JButton UpdateProjet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -339,9 +388,9 @@ public class Project extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton search;
-    private javax.swing.JButton search1;
-    private javax.swing.JButton search2;
-    private javax.swing.JTable table_books;
+    private javax.swing.JTextField project_description;
+    private javax.swing.JTextField project_title;
+    private javax.swing.JTextField project_type;
+    private javax.swing.JTable table_project;
     // End of variables declaration//GEN-END:variables
 }
