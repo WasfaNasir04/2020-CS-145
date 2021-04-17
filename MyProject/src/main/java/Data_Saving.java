@@ -109,7 +109,7 @@ public class Data_Saving {
     public void saveAdvisors(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("Advisor.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Advisor Name, Advisor ID, Subject Expert\n");
@@ -135,7 +135,7 @@ public class Data_Saving {
      public void loadAdvisors(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("Advisor.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();
@@ -175,7 +175,7 @@ public class Data_Saving {
      public void saveProjects(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("Projects.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Project Title, Project Type, Project Description,\n");
@@ -201,7 +201,7 @@ public class Data_Saving {
     public void loadProjects(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("Projects.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();
@@ -241,7 +241,7 @@ public class Data_Saving {
     public void saveSelectedProjects(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("SelectedProjects.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Student Name, Member Name, Group Code, Project Title\n");
@@ -268,7 +268,7 @@ public class Data_Saving {
     public void loadSelectedProjects(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("SelectedProjects.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();
@@ -308,7 +308,7 @@ public class Data_Saving {
     public void saveAssignedAdvisors(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("AssignedAdvisors.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Advisor Name, Group Code,Due Date, Project Title\n");
@@ -335,7 +335,7 @@ public class Data_Saving {
     public void loadAssignedAdvisors(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("AssignedAdvisors.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();
@@ -351,11 +351,11 @@ public class Data_Saving {
                S.setSession(toks[1]);
                S.setContactNumber(toks[2]);*/
               
-              String[] Token = line.split(",");
-               SimpleDateFormat formatter5=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy");
+            String[] Token = line.split(",");
+            SimpleDateFormat formatter5=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy");
                
-               Date d =  formatter5.parse(Token[2].replace(" PKT", ""));
-              Assigning_advisor Sp = new Assigning_advisor(Token[0],Token[1],formatter5.parse(Token[2].replace(" PKT", "")),Token[3]);
+            Date d =  formatter5.parse(Token[2].replace(" PKT", ""));
+            Assigning_advisor Sp = new Assigning_advisor(Token[0],Token[1],formatter5.parse(Token[2].replace(" PKT", "")),Token[3]);
               
                               
                  
@@ -379,7 +379,7 @@ public class Data_Saving {
      public void saveEvaluations(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("Evaluations.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Grades, Project Title, Group Code,Deadlines,Advisor Name, Rubrics\n");
@@ -408,7 +408,7 @@ public class Data_Saving {
     public void loadEvaluations(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("Evaluations.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();
@@ -449,7 +449,7 @@ public class Data_Saving {
     public void saveMarksheet(String filename)
     {
         try {
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter("Marksheet.txt");
             BufferedWriter bw = new BufferedWriter(fw);
             
             bw.write("Group Code,Project Title, Marks,Deadlines\n");
@@ -477,7 +477,7 @@ public class Data_Saving {
     public void loadMarksheet(String filename)
     {
         try {
-            FileReader fr = new FileReader(filename);
+            FileReader fr = new FileReader("Marksheet.txt");
             BufferedReader br = new BufferedReader(fr);
             
           String line = br.readLine();

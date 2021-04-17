@@ -37,8 +37,8 @@ public class Assigning_advisor {
         return Code;
     }
     
-    public String getDOB(){
-        return DOB.toString();
+    public Date getDOB(){
+        return DOB;
     }
     
     public String getProjectTitle(){

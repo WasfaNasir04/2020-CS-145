@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author uswa nasir
  */
-public class Login2 extends javax.swing.JFrame {
+public class Login3 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login2
+     * Creates new form Login3
      */
-    public Login2() {
+    public Login3() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -34,7 +34,7 @@ public class Login2 extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         Name = new javax.swing.JLabel();
-        Username = new javax.swing.JTextField();
+        User = new javax.swing.JTextField();
         Pass = new javax.swing.JLabel();
         Password = new javax.swing.JPasswordField();
         LOGIN = new javax.swing.JButton();
@@ -49,12 +49,12 @@ public class Login2 extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(204, 255, 255));
 
         Name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Name.setText("Student");
+        Name.setText("Advisor");
 
-        Username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255)));
-        Username.addActionListener(new java.awt.event.ActionListener() {
+        User.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255)));
+        User.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameActionPerformed(evt);
+                UserActionPerformed(evt);
             }
         });
 
@@ -86,7 +86,7 @@ public class Login2 extends javax.swing.JFrame {
                             .addComponent(Pass))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Username)
+                            .addComponent(User)
                             .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -95,7 +95,7 @@ public class Login2 extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(User, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Name))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -168,37 +168,54 @@ public class Login2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+    private void UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameActionPerformed
+    }//GEN-LAST:event_UserActionPerformed
 
     private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
         // TODO add your handling code here:
+        String username = User.getText();
+        String psd = Password.getText();
+        
+        if(username.equals("Advisor") && psd.equals("Advisor000"))
+        {
+            JOptionPane.showMessageDialog(null, "You are successfully Logined");
+            Marksheet_form M = new Marksheet_form();
+            M.setVisible(true);
+        this.setVisible(false);
+        }
+        else
+        {
+         JOptionPane.showMessageDialog(null, "Invalid Login or password");   
+        }                                 
+       
+        
+        
+    }
+        
+        public static void main(String[] args) {
+        // TODO code application logic here
+        Login3 L3 = new Login3();
+        L3.setVisible(true);
        
         //for student
-          SelectionScreen SS = new SelectionScreen();
-            SS.setVisible(true);
-            this.setVisible(false);
-       
+
     }//GEN-LAST:event_LOGINActionPerformed
 
-     public static void main(String args[]) {
-         Login2 L2 = new Login2();
-         L2.setVisible(true);
-     }
-     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-   
-
+    /**
+     * @param args the command line arguments
+     */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LOGIN;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Pass;
     private javax.swing.JPasswordField Password;
-    private javax.swing.JTextField Username;
+    private javax.swing.JTextField User;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
