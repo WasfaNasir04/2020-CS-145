@@ -1,4 +1,5 @@
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.util.Date;
 
 /*
@@ -23,6 +24,10 @@ public class Assigning_advisor {
         this.DOB = DOB;
         this.ProjectTitle = ProjectTitle;
      }
+
+    Assigning_advisor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     public String getAdvisorName(){
         return AdvisorName;
@@ -32,8 +37,8 @@ public class Assigning_advisor {
         return Code;
     }
     
-    public Date getDOB(){
-        return DOB;
+    public String getDOB(){
+        return DOB.toString();
     }
     
     public String getProjectTitle(){
