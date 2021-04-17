@@ -172,6 +172,9 @@
                           <Dimension value="[33, 23]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CloseActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

@@ -67,6 +67,11 @@ public class FYP_Management extends javax.swing.JFrame {
         Close.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Close.setText("Close");
         Close.setMaximumSize(new java.awt.Dimension(33, 23));
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -302,6 +307,11 @@ public class FYP_Management extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_CloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,4 +366,8 @@ public class FYP_Management extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private Marksheet_form Marksheet_form() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

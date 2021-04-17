@@ -14,14 +14,16 @@ public class Evaluations_details {
     public String Code;
     public String Deadlines;
     public String AdvisorName;
+    public String Rubrics;
     
-    public Evaluations_details(String Grades, String ProjectTitle,String Code,String Deadlines,String AdvisorName){
+    public Evaluations_details(String Grades, String ProjectTitle,String Code,String Deadlines,String AdvisorName, String Rubrics){
      
         this.Grades = Grades;
         this.ProjectTitle = ProjectTitle;
         this.Code = Code;
         this.Deadlines =Deadlines;
         this.AdvisorName = AdvisorName;
+        this.Rubrics = Rubrics;
     }
     
      public String getGrades(){
@@ -43,4 +45,9 @@ public class Evaluations_details {
     public String getAdvisorName(){
         return AdvisorName;
     }
+    
+      public String getRubrics(){
+        return Rubrics;
+    }
+
 }
