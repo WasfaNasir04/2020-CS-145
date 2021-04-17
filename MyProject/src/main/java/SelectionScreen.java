@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -21,12 +23,42 @@ public class SelectionScreen extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.model=new DefaultTableModel();
-        model.addColumn("No. of Students");
+        model.addColumn("Student Name");
         model.addColumn("Member's Name");
         model.addColumn("Group Code");
-        model.addColumn("Project Selected");
-        table_books.setModel(model);
+        model.addColumn("Project Title");
+        table_selection.setModel(model);
     }
+    
+    public ArrayList ListSelectedProjects(String stdName, String memberName,String Code, String ProjectTitle)
+    {
+        ArrayList<Selection_Project> list = new ArrayList <Selection_Project>();
+        Selection_Project SP = new Selection_Project(stdName,memberName,Code,ProjectTitle);
+        list.add(SP);
+        return list;
+        
+    }
+    
+    public void addRow(String stdName, String memberName,String Code, String ProjectTitle){
+        
+        DefaultTableModel model= (DefaultTableModel) table_selection.getModel();
+        ArrayList<Selection_Project> list = ListSelectedProjects(stdName,memberName,Code,ProjectTitle);
+        Object rowData[] = new Object[4];
+        for(int i = 0 ;i<list.size();i++){
+        rowData[0] = list.get(i).stdName;
+        rowData[1] = list.get(i).memberName;
+        rowData[2] = list.get(i).Code;
+        rowData[3] = list.get(i).ProjectTitle;
+        model.addRow(rowData);
+    }
+    }
+    
+    public static void main(String[] args)
+    {
+        SelectionScreen S = new SelectionScreen();
+        S.setVisible(true);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,18 +73,19 @@ public class SelectionScreen extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table_books = new javax.swing.JTable();
+        table_selection = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        book_title = new javax.swing.JTextField();
-        isbn_book = new javax.swing.JTextField();
-        author_book = new javax.swing.JTextField();
+        Std_Name = new javax.swing.JTextField();
+        Member_Name = new javax.swing.JTextField();
+        Group_Code = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        search2 = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Project_Title = new javax.swing.JTextField();
+        Select = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,8 +107,8 @@ public class SelectionScreen extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Selection Screen"));
 
-        table_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        table_books.setModel(new javax.swing.table.DefaultTableModel(
+        table_selection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        table_selection.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -83,7 +116,7 @@ public class SelectionScreen extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(table_books);
+        jScrollPane3.setViewportView(table_selection);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Member's Name");
@@ -94,43 +127,53 @@ public class SelectionScreen extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Group Code");
 
-        book_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Std_Name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        isbn_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        isbn_book.addActionListener(new java.awt.event.ActionListener() {
+        Member_Name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Member_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                isbn_bookActionPerformed(evt);
+                Member_NameActionPerformed(evt);
             }
         });
 
-        author_book.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        author_book.addActionListener(new java.awt.event.ActionListener() {
+        Group_Code.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Group_Code.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                author_bookActionPerformed(evt);
+                Group_CodeActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("No. students");
+        jLabel6.setText("Student Name");
 
-        search2.setBackground(new java.awt.Color(153, 153, 255));
-        search2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        search2.setText("SELECT");
-        search2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
-        search2.addActionListener(new java.awt.event.ActionListener() {
+        Update.setBackground(new java.awt.Color(153, 153, 255));
+        Update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Update.setText("UPDATE");
+        Update.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search2ActionPerformed(evt);
+                UpdateActionPerformed(evt);
             }
         });
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Project list");
+        jLabel5.setText("Project Title");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        Project_Title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Project_Title.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                Project_TitleActionPerformed(evt);
+            }
+        });
+
+        Select.setBackground(new java.awt.Color(153, 153, 255));
+        Select.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Select.setText("SELECT");
+        Select.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        Select.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectActionPerformed(evt);
             }
         });
 
@@ -139,32 +182,38 @@ public class SelectionScreen extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(book_title, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                .addComponent(isbn_book, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                .addComponent(author_book, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))))
-                    .addComponent(jLabel3)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Std_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(Member_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(Group_Code, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(Project_Title, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2))
+                        .addGap(42, 42, 42)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel2))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173)
+                        .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1921, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(2648, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +223,7 @@ public class SelectionScreen extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(book_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Std_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,19 +232,24 @@ public class SelectionScreen extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(isbn_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Member_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(author_book, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Group_Code, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addComponent(search2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(142, 142, 142))
+                            .addComponent(Project_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(418, Short.MAX_VALUE)
+                    .addComponent(Select, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(132, 132, 132)))
         );
 
         jTextField3.setEditable(false);
@@ -246,62 +300,72 @@ public class SelectionScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void isbn_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbn_bookActionPerformed
+    private void Member_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Member_NameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_isbn_bookActionPerformed
+    }//GEN-LAST:event_Member_NameActionPerformed
 
-    private void author_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_bookActionPerformed
+    private void Group_CodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Group_CodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_author_bookActionPerformed
+    }//GEN-LAST:event_Group_CodeActionPerformed
 
-    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search2ActionPerformed
+          DefaultTableModel model= (DefaultTableModel) table_selection.getModel();
+        if(table_selection.getSelectedRowCount()==1){
+        String stdName = Std_Name.getText();
+        String memberName = Member_Name.getText();
+        String Code = Group_Code.getText();
+        String ProjectTitle = Project_Title.getText();
+        
+        
+        table_selection.setValueAt(stdName, table_selection.getSelectedRow(), 0);
+        table_selection.setValueAt(memberName, table_selection.getSelectedRow(), 1);
+        table_selection.setValueAt(Code, table_selection.getSelectedRow(), 2);
+        table_selection.setValueAt(ProjectTitle, table_selection.getSelectedRow(), 3);
+        
+        JOptionPane.showMessageDialog(null,"Project Selection updated successfully");
+        }
+        else{
+        if(table_selection.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Table is empty");
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please select any Project!");
+        }
+        }
+    }//GEN-LAST:event_UpdateActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void Project_TitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Project_TitleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_Project_TitleActionPerformed
+
+    private void SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectActionPerformed
+        // TODO add your handling code here:
+        String stdName = Std_Name.getText();
+        String memberName = Member_Name.getText();
+        String Code = Group_Code.getText();
+        String ProjectTitle = Project_Title.getText();
+        
+        addRow(stdName,memberName,Code,ProjectTitle);
+        Std_Name.setText("");
+        Member_Name.setText("");
+        Group_Code.setText("");
+        Project_Title.setText("");
+    
+    }//GEN-LAST:event_SelectActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectionScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectionScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectionScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectionScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SelectionScreen().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author_book;
-    private javax.swing.JTextField book_title;
-    private javax.swing.JTextField isbn_book;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField Group_Code;
+    private javax.swing.JTextField Member_Name;
+    private javax.swing.JTextField Project_Title;
+    private javax.swing.JButton Select;
+    private javax.swing.JTextField Std_Name;
+    private javax.swing.JButton Update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,7 +377,6 @@ public class SelectionScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton search2;
-    private javax.swing.JTable table_books;
+    private javax.swing.JTable table_selection;
     // End of variables declaration//GEN-END:variables
 }

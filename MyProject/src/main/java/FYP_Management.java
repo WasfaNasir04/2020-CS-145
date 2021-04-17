@@ -297,7 +297,7 @@ public class FYP_Management extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        Assignment A = new Assignment();
+        assignAdvisor A = new assignAdvisor();
         A.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed

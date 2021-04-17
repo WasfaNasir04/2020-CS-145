@@ -107,52 +107,81 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel4" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                          <Component id="search2" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel5" alignment="1" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="ad_name" alignment="0" pref="193" max="32767" attributes="0"/>
+                                          <Component id="grp_code" alignment="0" pref="193" max="32767" attributes="0"/>
+                                          <Component id="Pj_title" alignment="0" pref="193" max="32767" attributes="0"/>
+                                          <Component id="duedate" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jComboBox1" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="book_title" alignment="0" pref="193" max="32767" attributes="0"/>
-                                      <Component id="isbn_book" alignment="0" pref="193" max="32767" attributes="0"/>
-                                      <Component id="author_book" alignment="0" pref="193" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="update" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="471" max="-2" attributes="0"/>
                       <EmptySpace pref="1921" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1270" max="-2" attributes="0"/>
+                          <Component id="emp_dob" pref="251" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1271" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1270" max="-2" attributes="0"/>
+                          <Component id="emp_dob1" pref="251" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1271" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1270" max="-2" attributes="0"/>
+                          <Component id="emp_dob2" pref="251" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1271" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="assign" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace pref="2648" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="98" max="32767" attributes="0"/>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="book_title" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="ad_name" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -162,26 +191,57 @@
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="isbn_book" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="grp_code" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="author_book" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="duedate" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Component id="Pj_title" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="search2" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="update" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
+                          <Component id="emp_dob" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
+                          <Component id="emp_dob1" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
+                          <Component id="emp_dob2" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace pref="276" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="418" max="32767" attributes="0"/>
+                          <Component id="assign" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -194,7 +254,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="table_books">
+                <Component class="javax.swing.JTable" name="table_Assign">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -239,7 +299,7 @@
                 <Property name="text" type="java.lang.String" value="Due Date"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="book_title">
+            <Component class="javax.swing.JTextField" name="ad_name">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -248,7 +308,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="isbn_book">
+            <Component class="javax.swing.JTextField" name="grp_code">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -257,10 +317,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isbn_bookActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grp_codeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="author_book">
+            <Component class="javax.swing.JTextField" name="Pj_title">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -269,7 +329,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="author_bookActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Pj_titleActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -280,7 +340,74 @@
                 <Property name="text" type="java.lang.String" value="Advisor Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="search2">
+            <Component class="javax.swing.JButton" name="update">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="99" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="UPDATE"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder>
+                      <Color PropertyName="highlight" blue="0" green="0" red="0" type="rgb"/>
+                    </EtchetBorder>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Project Title"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="emp_dob">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="99" green="33" red="0" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="emp_dob1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="99" green="33" red="0" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="emp_dob2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="99" green="33" red="0" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="duedate">
+            </Component>
+            <Component class="javax.swing.JButton" name="assign">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -298,37 +425,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="search2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assignActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="33" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Project list"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
