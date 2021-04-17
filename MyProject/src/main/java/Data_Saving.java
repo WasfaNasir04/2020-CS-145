@@ -352,11 +352,12 @@ public class Data_Saving {
                S.setContactNumber(toks[2]);*/
               
               String[] Token = line.split(",");
-             // Assigning_advisor Sp = new Assigning_advisor(Token[0],Token[1],Token[2],Token[3]);
+               SimpleDateFormat formatter5=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy");
+               
+               Date d =  formatter5.parse(Token[2].replace(" PKT", ""));
+              Assigning_advisor Sp = new Assigning_advisor(Token[0],Token[1],formatter5.parse(Token[2].replace(" PKT", "")),Token[3]);
               
-               SimpleDateFormat formatter5=new SimpleDateFormat("E MMM dd HH:mm:ss yyyy");  
-                 Date d =  formatter5.parse(Token[2].replace(" PKT", ""));
-                
+                              
                  
               /* c.setDob(d);
                    Date d1=formatter5.parse(toks[4].replace(" PKT", ""));  
