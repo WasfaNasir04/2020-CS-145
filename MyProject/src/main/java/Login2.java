@@ -174,11 +174,19 @@ public class Login2 extends javax.swing.JFrame {
 
     private void LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINActionPerformed
         // TODO add your handling code here:
-       
+        String username = Username.getText();
+        String psd = Password.getText();
         //for student
-          SelectionScreen SS = new SelectionScreen();
+        if(!(username.equals("") || psd.equals("")))
+        {
+            JOptionPane.showMessageDialog(null, "You are successfully Logined");
+             SelectionScreen SS = new SelectionScreen();
             SS.setVisible(true);
             this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please Enter User Name and Pasword");
+        }
        
     }//GEN-LAST:event_LOGINActionPerformed
 
