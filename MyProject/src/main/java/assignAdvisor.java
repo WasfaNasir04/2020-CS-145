@@ -409,6 +409,9 @@ public class assignAdvisor extends javax.swing.JFrame {
 
     private void assign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assign1ActionPerformed
         // TODO add your handling code here:
+        Marksheet_form MS = new Marksheet_form();
+        MS.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_assign1ActionPerformed
 
