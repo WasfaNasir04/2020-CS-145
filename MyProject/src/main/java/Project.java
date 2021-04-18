@@ -43,7 +43,7 @@ public class Project extends javax.swing.JFrame {
         
         DefaultTableModel model= (DefaultTableModel) table_project.getModel();
         ArrayList<Project_Manage> list = ListUser(Title,Type,Description);
-        Object rowData[] = new Object[2];
+        Object rowData[] = new Object[3];
         for(int i = 0 ;i<list.size();i++){
         rowData[0] = list.get(i).Title;
         rowData[1] = list.get(i).Type;
